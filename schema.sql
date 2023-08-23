@@ -30,12 +30,11 @@ CREATE TABLE species (
 );
 
 -- Modify the animals table
-ALTER TABLE animals
-    ADD COLUMN species_id INT REFERENCES species(id),
-    ADD COLUMN owner_id INT REFERENCES owners(id);
+-- Remove the existing species column from animals table
+ALTER TABLE animals DROP COLUMN species;
 
-
-
+-- Displaying results 
+ select * from animals
 -- WRITE A QUERY TO JOIN 
 
 -- What animals belong to Melody Pond?
