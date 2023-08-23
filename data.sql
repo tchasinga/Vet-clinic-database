@@ -37,3 +37,33 @@ VALUES ('Blossom', '1998-10-13', 3, true, 17.0, 'Flower');
 
 INSERT INTO animals (name, date_of_birth, escape_attempts, neutered, weight_kg, species)
 VALUES ('Ditto', '2022-05-14', 4, true, 22.0, 'Shape-shifter');
+
+-- JOINING DATA ...
+
+
+-- Insert data into the owners table
+INSERT INTO owners (full_name, age) VALUES
+    ('Sam Smith', 34),
+    ('Jennifer Orwell', 19),
+    ('Bob', 45),
+    ('Melody Pond', 77),
+    ('Dean Winchester', 14),
+    ('Jodie Whittaker', 38);
+
+-- Insert data into the species table
+INSERT INTO species (name) VALUES
+    ('Pokemon'),
+    ('Digimon');
+
+-- Update animals based on species
+UPDATE animals SET species_id = 1 WHERE name NOT LIKE '%mon';
+UPDATE animals SET species_id = 2 WHERE name LIKE '%mon';
+
+-- Update animals with owner information
+UPDATE animals SET owner_id = 4 WHERE name = 'Charmander' OR name = 'Squirtle' OR name = 'Blossom';
+UPDATE animals SET owner_id = 5 WHERE name = 'Angemon' OR name = 'Boarmon';
+UPDATE animals SET owner_id = 2 WHERE name = 'Gabumon' OR name = 'Pikachu';
+UPDATE animals SET owner_id = 3 WHERE name = 'Devimon' OR name = 'Plantmon';
+UPDATE animals SET owner_id = 1 WHERE name = 'Agumon';
+
+-- The rest of your existing data insertions...
