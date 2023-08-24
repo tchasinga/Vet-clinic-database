@@ -81,3 +81,39 @@ LEFT JOIN animals a ON o.id = a.owner_id
 GROUP BY o.id, o.full_name
 ORDER BY animal_count DESC
 LIMIT 1;
+
+
+-- Create the vets table
+CREATE TABLE vets (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    age INTEGER,
+    date_of_graduation DATE
+);
+
+-- Create the species table
+CREATE TABLE species (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+-- Create the specializations join table
+CREATE TABLE specializations (
+    vet_id INTEGER REFERENCES vets(id),
+    species_id INTEGER REFERENCES species(id),
+    PRIMARY KEY (vet_id, species_id)
+);
+
+-- Create the animals table
+CREATE TABLE animals (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+-- Create the visits join table
+CREATE TABLE visits (
+    animal_id INTEGER REFERENCES animals(id),
+    vet_id INTEGER REFERENCES vets(id),
+    visit_date DATE,
+    PRIMARY KEY (animal_id, vet_id)
+);
